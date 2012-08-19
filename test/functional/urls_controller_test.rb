@@ -14,6 +14,6 @@ class UrlsControllerTest < ActionController::TestCase
   test "should return url" do
     post :create, :url => { 'url' => 'http://www.google.com'}
     get :show, { 'id' => flash[:shortened_id] }
-    assert_response :success
+    assert_response :redirect
   end
 end
