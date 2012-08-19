@@ -10,4 +10,10 @@ class UrlsControllerTest < ActionController::TestCase
     post :create, :url => { 'url' => 'http://www.google.com' }
     assert_not_nil(flash[:shortened_id])
   end
+  
+  test "should return url" do
+    post :create, :url => { 'url' => 'http://www.google.com'}
+    get :show, { 'id' => flash[:shortened_id] }
+    assert_response :success
+  end
 end
